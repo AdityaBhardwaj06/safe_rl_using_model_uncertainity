@@ -1,0 +1,22 @@
+# Core PyTorch and Math
+torch>=2.0.0
+numpy>=1.23.0
+scipy>=1.10.0
+
+# Safe RL and Environments
+safety-gymnasium>=0.4.0
+gymnasium>=0.28.1
+omnisafe>=0.1.5
+
+# World Models & Computer Vision
+pillow>=9.5.0
+opencv-python>=4.7.0
+ruamel.yaml>=0.17.0
+
+# Visualization & Logging
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tensorboard>=2.12.0
+
+# Pretrained Checkpoint Tools
+huggingface_hub>=0.16.0

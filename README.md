@@ -1,33 +1,19 @@
-# Safe Reinforcement Learning using Model Uncertainty — corrected codebase
+# Safe Reinforcement Learning using Model Uncertainty 
 
 **Course:** CS F317 Reinforcement Learning, BITS Pilani · **Instructor-in-charge:** Dr. Prashant Trivedi
-**Team:** Aditya Bhardwaj & partner
+**Team:** Aditya Bhardwaj & Rajat Garg
 
 Every number and figure produced by this repo comes from a script that runs the real
-Safety-Gymnasium environment and writes a log in `results/`. No script contains hard-coded
-"results". `results/RESULTS.md` is generated from those logs by `scripts/summarize_results.py`.
+Safety-Gymnasium environment and writes a log in `results/`.
+`results/RESULTS.md` is generated from those logs by `scripts/summarize_results.py`.
 
 ## 1. Idea (unchanged)
 
 SafeDreamer uses a single cost head ĉ(z). We replace it with K bootstrapped heads and plan with the
 pessimistic cost c̃(z) = μ_c(z) + κ·σ_c(z), where σ_c is the disagreement across heads.
 
-## 2. What changed relative to the mid-sem draft, and why
 
-| Old file | Problem | Now |
-|---|---|---|
-| `plot_results.py` | curves were hard-coded NumPy arrays | plots only logged CSV/JSON results |
-| `eval_checkpoint.py` | never loaded a checkpoint; printed fixed numbers incl. the "0.021" | evaluates a real saved policy in the real env, errors if no checkpoint |
-| `smoke_test.py` | one Adam optimiser over **all** parameters stepped on the actor loss → the model inflates reward / deflates cost (Colab log: reward 133,603, cost −58,081) | separate world-model / actor / critic / λ updates; `--buggy` reproduces the old failure; invariant checks every iteration |
-| `ensemble_cost_head.py` | Sigmoid + BCELoss; bootstrap masks unused | logits + `binary_cross_entropy_with_logits`; Poisson bootstrap weights; optional randomized priors |
-| `verify_env.py` / notebook cell 4 | notebook replaced the real frame with a hand-drawn matplotlib figure titled as the environment | real render (needs `MUJOCO_GL=egl`), plus a check that cost matches true hazard geometry |
-| `world_model_wrapper.py`, `lagrangian.py` | not available for review | rewritten: `models/world_model.py`, `models/actor_critic.py`, `models/lagrangian.py` |
-
-## 3. Installation (Python 3.12 / current Colab)
-
-`pip install safety-gymnasium` does **not** work on Python ≥ 3.11: it pins `pygame==2.1.0` and
-`mujoco==2.3.3` (no 3.12 wheels) and fails on import with
-`ValueError: mutable default <class 'numpy.ndarray'> ... use default_factory`. Use:
+## 2. Installation (Python 3.12 / Colab)
 
 ```bash
 pip install -r requirements.txt
@@ -39,7 +25,7 @@ python scripts/verify_env.py                                   # MUJOCO_GL=egl o
 ```
 `scripts/sg_compat.py` also restores `np.bool8` (removed in NumPy 2, still used by gymnasium 0.28.1).
 
-## 4. Reproducing every result (CPU is enough; ~1.5 h on one core)
+## 3. Reproducing every result (CPU is enough; ~1.5 h on one core)
 
 ```bash
 python scripts/collect_data.py --steps 60000                    # 60 layouts, real transitions
@@ -55,7 +41,7 @@ python scripts/plot_results.py && python scripts/summarize_results.py
 # or simply: bash run_all.sh
 ```
 
-## 5. Experiments
+## 4. Experiments
 
 * **Exp 1 — single-head noise floor.** Measures what a single cost head predicts in truly safe
   states of *unseen layouts* and what that adds up to over 15 imagined steps, a discounted return,
@@ -68,7 +54,7 @@ python scripts/plot_results.py && python scripts/summarize_results.py
   logging *training-time* violations. This is a CPU-scale pilot (30k–60k steps, 1–2 seeds), **not**
   a SafeDreamer reproduction.
 
-## 6. Scope and limitations (say these in the viva)
+## 5. Scope and limitations 
 
 * The world model here is a small deterministic MLP latent model on vector observations, not DreamerV3's
   RSSM on pixels. Cost heads in Exp 1/2 take observations as a proxy for the latent z.

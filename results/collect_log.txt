@@ -1,0 +1,9 @@
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+    10000 steps | episodes 10 | contact rate so far 1.710% | 23s
+    20000 steps | episodes 20 | contact rate so far 2.780% | 43s
+    30000 steps | episodes 30 | contact rate so far 2.837% | 63s
+    40000 steps | episodes 40 | contact rate so far 2.647% | 84s
+    50000 steps | episodes 50 | contact rate so far 2.992% | 103s
+    60000 steps | episodes 60 | contact rate so far 2.982% | 122s
+Saved 60000 transitions, 60 complete episodes, contact rate 2.982%, mean episode cost 29.8 -> data/pointgoal1_random.npz

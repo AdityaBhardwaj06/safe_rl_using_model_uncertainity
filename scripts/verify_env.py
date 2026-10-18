@@ -1,74 +1,53 @@
 """
-Environment Verification & Frame Rendering Script
-Project: Safe Reinforcement Learning using Model Uncertainty (CS F317, BITS Pilani)
+Verify the Safety-Gymnasium install and (optionally) save a REAL rendered frame.
 
-Checks Safety-Gymnasium installation, inspects action/observation spaces,
-and renders sample camera frames for presentation slides.
+Rendering needs an OpenGL backend. On Colab with a GPU use:   MUJOCO_GL=egl python scripts/verify_env.py
+On a headless CPU machine try:                               MUJOCO_GL=osmesa python scripts/verify_env.py
+If rendering fails, the script still verifies stepping and costs, and says so honestly --
+do NOT replace the frame with a hand-drawn figure labelled as the environment.
 """
-
 import os
-import sys
+
+import sg_compat  # noqa: F401
+import numpy as np
+from sg_compat import hazard_boundary_distance, make_env
+
 
 def main():
-    print("=" * 65)
-    print("  Safe RL Environment Verification: SafetyPointGoal1-v0")
-    print("=" * 65)
+    task = "SafetyPointGoal1-v0"
+    print("=" * 65 + f"\n  Safe RL environment verification: {task}\n" + "=" * 65)
+    env = make_env(task, render_mode="rgb_array")
+    obs, _ = env.reset(seed=42)
+    print(f"  observation shape : {obs.shape}\n  action space      : {env.action_space}")
 
     try:
-        import safety_gymnasium
-        print("✓ safety_gymnasium is successfully imported!")
-    except ImportError:
-        print("✗ safety_gymnasium is NOT installed.")
-        print("  Run: pip install safety-gymnasium")
-        sys.exit(1)
-
-    try:
+        frame = env.render()
+        import matplotlib
+        matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        print("✓ matplotlib is available for frame export.")
-    except ImportError:
-        print("✗ matplotlib not found. Run: pip install matplotlib")
-        sys.exit(1)
+        os.makedirs("artifacts", exist_ok=True)
+        plt.figure(figsize=(5, 5), dpi=150); plt.imshow(frame); plt.axis("off")
+        plt.title(f"{task} (rendered frame, seed 42)", fontsize=10)
+        plt.savefig("artifacts/safety_point_goal1_frame.png", bbox_inches="tight"); plt.close()
+        print(f"  rendered frame {frame.shape} -> artifacts/safety_point_goal1_frame.png")
+    except Exception as e:  # noqa: BLE001
+        print(f"  rendering unavailable here ({type(e).__name__}); set MUJOCO_GL=egl (GPU) or osmesa (CPU).")
 
-    task_name = "SafetyPointGoal1-v0"
-    print(f"\n[1/3] Initializing task: {task_name} (rgb_array render mode)...")
-    env = safety_gymnasium.make(task_name, render_mode="rgb_array")
-
-    obs, info = env.reset(seed=42)
-    print(f"✓ Environment reset successful!")
-    print(f"  • Observation Shape : {obs.shape}")
-    print(f"  • Action Space      : {env.action_space}")
-
-    print("\n[2/3] Rendering RGB camera frame...")
-    frame = env.render()
-    print(f"✓ Rendered camera frame shape: {frame.shape}")
-
-    out_dir = os.path.join(os.path.dirname(__file__), "..", "artifacts")
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "safety_point_goal1_frame.png")
-
-    plt.figure(figsize=(7, 7), dpi=150)
-    plt.imshow(frame)
-    plt.axis("off")
-    plt.title("Safety-Gymnasium: SafetyPointGoal1-v0\n(Agent: Yellow | Goal: Green | Hazards: Purple Circles)",
-              fontsize=11, weight='bold')
-    plt.tight_layout()
-    plt.savefig(out_path, bbox_inches='tight')
-    plt.close()
-    print(f"✓ Saved high-resolution camera frame to:\n  --> {os.path.abspath(out_path)}")
-
-    print("\n[3/3] Simulating 10 random steps to verify cost calculation...")
-    total_cost = 0.0
-    for step in range(10):
-        action = env.action_space.sample()
-        obs, reward, cost, terminated, truncated, info = env.step(action)
-        total_cost += cost
-        if cost > 0:
-            print(f"  [Step {step+1}] Hazard contact detected! Cost = {cost}")
-
-    print(f"✓ Step verification complete. 10-step total cost: {total_cost}")
+    rng = np.random.default_rng(0)
+    total, contacts, a = 0, 0, np.zeros(2)
+    for t in range(3000):  # held-action exploration so the robot actually moves
+        if t % 15 == 0:
+            a = rng.uniform(-1, 1, 2)
+        obs, r, c, term, trunc, _ = env.step(a)
+        contacts += int(c > 0)
+        assert (c > 0) == (hazard_boundary_distance(env) <= 0), "cost does not match hazard geometry"
+        total += 1
+        if term or trunc:
+            env.reset()
+    print(f"  {total} steps: {contacts} hazard-contact steps; cost always matched true hazard geometry")
     env.close()
-    print("\nEnvironment verification PASSED! Ready for SafeDreamer experiments.")
-    print("=" * 65)
+    print("Environment verification PASSED.")
+
 
 if __name__ == "__main__":
     main()

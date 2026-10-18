@@ -1,0 +1,33 @@
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+step    2000 | episodes    2 | cum violations      0 | lambda 0.000 | 7s
+step    4000 | episodes    4 | cum violations     28 | lambda 0.000 | 12s
+step    6000 | episodes    6 | cum violations    112 | lambda 0.595 | 17s
+step    8000 | episodes    8 | cum violations    123 | lambda 0.000 | 22s
+step   10000 | episodes   10 | cum violations    206 | lambda 0.578 | 27s
+step   12000 | episodes   12 | cum violations    653 | lambda 7.525 | 33s
+step   14000 | episodes   14 | cum violations    988 | lambda 12.513 | 38s
+step   16000 | episodes   16 | cum violations   1468 | lambda 20.038 | 43s
+step   18000 | episodes   18 | cum violations   2110 | lambda 30.398 | 48s
+step   20000 | episodes   20 | cum violations   2689 | lambda 39.655 | 54s
+step   22000 | episodes   22 | cum violations   3234 | lambda 48.318 | 59s
+step   24000 | episodes   24 | cum violations   3317 | lambda 48.895 | 64s
+step   26000 | episodes   26 | cum violations   3339 | lambda 48.405 | 69s
+step   28000 | episodes   28 | cum violations   3339 | lambda 47.530 | 74s
+step   30000 | episodes   30 | cum violations   4250 | lambda 62.598 | 79s
+step   32000 | episodes   32 | cum violations   4361 | lambda 63.665 | 84s
+step   34000 | episodes   34 | cum violations   4361 | lambda 62.790 | 89s
+step   36000 | episodes   36 | cum violations   4813 | lambda 69.825 | 93s
+step   38000 | episodes   38 | cum violations   4884 | lambda 70.193 | 98s
+step   40000 | episodes   40 | cum violations   5021 | lambda 71.715 | 103s
+step   42000 | episodes   42 | cum violations   5095 | lambda 72.135 | 108s
+step   44000 | episodes   44 | cum violations   5095 | lambda 71.260 | 113s
+step   46000 | episodes   46 | cum violations   5123 | lambda 70.875 | 118s
+step   48000 | episodes   48 | cum violations   5339 | lambda 73.780 | 123s
+step   50000 | episodes   50 | cum violations   5339 | lambda 72.905 | 128s
+step   52000 | episodes   52 | cum violations   5615 | lambda 76.860 | 133s
+step   54000 | episodes   54 | cum violations   5892 | lambda 80.832 | 137s
+step   56000 | episodes   56 | cum violations   5892 | lambda 79.957 | 143s
+step   58000 | episodes   58 | cum violations   5925 | lambda 79.660 | 148s
+step   60000 | episodes   60 | cum violations   6036 | lambda 80.727 | 153s
+Done. Log -> results/ppo_lag_seed0.csv

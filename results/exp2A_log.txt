@@ -1,0 +1,10 @@
+[A      plain s0] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.339 | AUROC c_tilde 0.312 | AUROC sigma_logit 0.757 | TPR@1%FPR c_tilde 0.017
+[A      plain s1] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.282 | AUROC c_tilde 0.247 | AUROC sigma_logit 0.713 | TPR@1%FPR c_tilde 0.020
+[A      plain s2] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.336 | AUROC c_tilde 0.328 | AUROC sigma_logit 0.714 | TPR@1%FPR c_tilde 0.000
+[A  bootstrap s0] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.312 | AUROC c_tilde 0.302 | AUROC sigma_logit 0.820 | TPR@1%FPR c_tilde 0.026
+[A  bootstrap s1] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.269 | AUROC c_tilde 0.240 | AUROC sigma_logit 0.665 | TPR@1%FPR c_tilde 0.025
+[A  bootstrap s2] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.329 | AUROC c_tilde 0.329 | AUROC sigma_logit 0.503 | TPR@1%FPR c_tilde 0.000
+[A boot+prior s0] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.315 | AUROC c_tilde 0.305 | AUROC sigma_logit 0.818 | TPR@1%FPR c_tilde 0.026
+[A boot+prior s1] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.270 | AUROC c_tilde 0.241 | AUROC sigma_logit 0.665 | TPR@1%FPR c_tilde 0.025
+[A boot+prior s2] sigma far/near/contact = 0.0000/0.0000/0.0000 | AUROC sigma 0.324 | AUROC c_tilde 0.325 | AUROC sigma_logit 0.496 | TPR@1%FPR c_tilde 0.000
+Saved -> ../results/exp2_uncertainty_A.json

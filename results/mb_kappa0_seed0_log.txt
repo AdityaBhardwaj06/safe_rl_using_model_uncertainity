@@ -1,0 +1,33 @@
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+[mb_kappa0_seed0] step   1000 | ep   0 | return   -1.12 | cost    30 | cum viol    30 | lambda  0.000 | sigma 0.0000 | 1s
+[mb_kappa0_seed0] step   2000 | ep   1 | return    2.56 | cost    16 | cum viol    46 | lambda  0.000 | sigma 0.0000 | 5s
+[mb_kappa0_seed0] step   3000 | ep   2 | return   -6.24 | cost    10 | cum viol    56 | lambda  0.000 | sigma 0.0000 | 10s
+[mb_kappa0_seed0] step   4000 | ep   3 | return   -2.56 | cost     0 | cum viol    56 | lambda  0.000 | sigma 0.0000 | 14s
+[mb_kappa0_seed0] step   5000 | ep   4 | return   -1.37 | cost    39 | cum viol    95 | lambda  0.000 | sigma 0.0000 | 39s
+[mb_kappa0_seed0] step   6000 | ep   5 | return   -0.14 | cost   244 | cum viol   339 | lambda  4.380 | sigma 0.0057 | 67s
+[mb_kappa0_seed0] step   7000 | ep   6 | return    4.86 | cost   246 | cum viol   585 | lambda  8.800 | sigma 0.0146 | 93s
+[mb_kappa0_seed0] step   8000 | ep   7 | return   -1.83 | cost   158 | cum viol   743 | lambda 11.460 | sigma 0.0175 | 119s
+[mb_kappa0_seed0] step   9000 | ep   8 | return    5.15 | cost   119 | cum viol   862 | lambda 13.340 | sigma 0.0207 | 145s
+[mb_kappa0_seed0] step  10000 | ep   9 | return   -7.96 | cost    15 | cum viol   877 | lambda 13.140 | sigma 0.0203 | 172s
+[mb_kappa0_seed0] step  11000 | ep  10 | return   -3.55 | cost    16 | cum viol   893 | lambda 12.960 | sigma 0.0163 | 200s
+[mb_kappa0_seed0] step  12000 | ep  11 | return   -1.69 | cost    24 | cum viol   917 | lambda 12.940 | sigma 0.0173 | 225s
+[mb_kappa0_seed0] step  13000 | ep  12 | return   -2.69 | cost     0 | cum viol   917 | lambda 12.440 | sigma 0.0182 | 251s
+[mb_kappa0_seed0] step  14000 | ep  13 | return   -2.01 | cost     0 | cum viol   917 | lambda 11.940 | sigma 0.0183 | 278s
+[mb_kappa0_seed0] step  15000 | ep  14 | return   -2.10 | cost     0 | cum viol   917 | lambda 11.440 | sigma 0.0167 | 306s
+[mb_kappa0_seed0] step  16000 | ep  15 | return   -1.75 | cost    21 | cum viol   938 | lambda 11.360 | sigma 0.0160 | 331s
+[mb_kappa0_seed0] step  17000 | ep  16 | return   -2.68 | cost     0 | cum viol   938 | lambda 10.860 | sigma 0.0190 | 357s
+[mb_kappa0_seed0] step  18000 | ep  17 | return   -3.42 | cost    34 | cum viol   972 | lambda 11.040 | sigma 0.0209 | 385s
+[mb_kappa0_seed0] step  19000 | ep  18 | return   -0.70 | cost     0 | cum viol   972 | lambda 10.540 | sigma 0.0183 | 413s
+[mb_kappa0_seed0] step  20000 | ep  19 | return   -2.38 | cost     0 | cum viol   972 | lambda 10.040 | sigma 0.0181 | 439s
+[mb_kappa0_seed0] step  21000 | ep  20 | return   -2.17 | cost     0 | cum viol   972 | lambda  9.540 | sigma 0.0143 | 464s
+[mb_kappa0_seed0] step  22000 | ep  21 | return   -6.94 | cost     0 | cum viol   972 | lambda  9.040 | sigma 0.0130 | 494s
+[mb_kappa0_seed0] step  23000 | ep  22 | return    3.18 | cost    10 | cum viol   982 | lambda  8.740 | sigma 0.0134 | 523s
+[mb_kappa0_seed0] step  24000 | ep  23 | return   -0.23 | cost    19 | cum viol  1001 | lambda  8.620 | sigma 0.0111 | 551s
+[mb_kappa0_seed0] step  25000 | ep  24 | return   -2.30 | cost    13 | cum viol  1014 | lambda  8.380 | sigma 0.0140 | 577s
+[mb_kappa0_seed0] step  26000 | ep  25 | return  -18.47 | cost     0 | cum viol  1014 | lambda  7.880 | sigma 0.0105 | 604s
+[mb_kappa0_seed0] step  27000 | ep  26 | return   -0.58 | cost    30 | cum viol  1044 | lambda  7.980 | sigma 0.0123 | 630s
+[mb_kappa0_seed0] step  28000 | ep  27 | return   -4.18 | cost     0 | cum viol  1044 | lambda  7.480 | sigma 0.0116 | 656s
+[mb_kappa0_seed0] step  29000 | ep  28 | return   -2.74 | cost     0 | cum viol  1044 | lambda  6.980 | sigma 0.0112 | 682s
+[mb_kappa0_seed0] step  30000 | ep  29 | return    1.85 | cost    14 | cum viol  1058 | lambda  6.760 | sigma 0.0123 | 708s
+Done -> results/mb_kappa0_seed0.csv

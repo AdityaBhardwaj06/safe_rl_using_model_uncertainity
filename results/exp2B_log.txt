@@ -1,0 +1,17 @@
+[B N=  1000  bootstrap s0] contacts in train   40 | AUROC k0/k1/k2 = 0.451/0.452/0.454 | TPR@5%FPR k0/k1/k2 = 0.052/0.055/0.096 | logit-pess AUROC k1 0.451 | sigma->error AUROC 0.733
+[B N=  1000  bootstrap s1] contacts in train   30 | AUROC k0/k1/k2 = 0.380/0.380/0.380 | TPR@5%FPR k0/k1/k2 = 0.172/0.172/0.172 | logit-pess AUROC k1 0.386 | sigma->error AUROC 0.415
+[B N=  1000 boot+prior s0] contacts in train   40 | AUROC k0/k1/k2 = 0.450/0.451/0.453 | TPR@5%FPR k0/k1/k2 = 0.052/0.057/0.098 | logit-pess AUROC k1 0.451 | sigma->error AUROC 0.733
+[B N=  1000 boot+prior s1] contacts in train   30 | AUROC k0/k1/k2 = 0.382/0.381/0.381 | TPR@5%FPR k0/k1/k2 = 0.162/0.167/0.172 | logit-pess AUROC k1 0.386 | sigma->error AUROC 0.414
+[B N=  5000  bootstrap s0] contacts in train   86 | AUROC k0/k1/k2 = 0.436/0.439/0.439 | TPR@5%FPR k0/k1/k2 = 0.070/0.070/0.070 | logit-pess AUROC k1 0.433 | sigma->error AUROC 0.446
+[B N=  5000  bootstrap s1] contacts in train   85 | AUROC k0/k1/k2 = 0.592/0.592/0.592 | TPR@5%FPR k0/k1/k2 = 0.207/0.207/0.207 | logit-pess AUROC k1 0.579 | sigma->error AUROC 0.643
+[B N=  5000 boot+prior s0] contacts in train   86 | AUROC k0/k1/k2 = 0.446/0.450/0.451 | TPR@5%FPR k0/k1/k2 = 0.076/0.076/0.076 | logit-pess AUROC k1 0.443 | sigma->error AUROC 0.457
+[B N=  5000 boot+prior s1] contacts in train   85 | AUROC k0/k1/k2 = 0.590/0.592/0.592 | TPR@5%FPR k0/k1/k2 = 0.222/0.237/0.237 | logit-pess AUROC k1 0.584 | sigma->error AUROC 0.648
+[B N= 20000  bootstrap s0] contacts in train  455 | AUROC k0/k1/k2 = 0.734/0.735/0.735 | TPR@5%FPR k0/k1/k2 = 0.066/0.066/0.066 | logit-pess AUROC k1 0.727 | sigma->error AUROC 0.797
+[B N= 20000  bootstrap s1] contacts in train  620 | AUROC k0/k1/k2 = 0.764/0.764/0.764 | TPR@5%FPR k0/k1/k2 = 0.167/0.172/0.172 | logit-pess AUROC k1 0.765 | sigma->error AUROC 0.802
+[B N= 20000 boot+prior s0] contacts in train  455 | AUROC k0/k1/k2 = 0.731/0.731/0.731 | TPR@5%FPR k0/k1/k2 = 0.061/0.063/0.063 | logit-pess AUROC k1 0.727 | sigma->error AUROC 0.793
+[B N= 20000 boot+prior s1] contacts in train  620 | AUROC k0/k1/k2 = 0.773/0.773/0.773 | TPR@5%FPR k0/k1/k2 = 0.172/0.172/0.172 | logit-pess AUROC k1 0.773 | sigma->error AUROC 0.809
+[B N= 48000  bootstrap s0] contacts in train 1331 | AUROC k0/k1/k2 = 0.697/0.697/0.698 | TPR@5%FPR k0/k1/k2 = 0.055/0.052/0.052 | logit-pess AUROC k1 0.696 | sigma->error AUROC 0.789
+[B N= 48000  bootstrap s1] contacts in train 1591 | AUROC k0/k1/k2 = 0.838/0.839/0.839 | TPR@5%FPR k0/k1/k2 = 0.222/0.207/0.207 | logit-pess AUROC k1 0.836 | sigma->error AUROC 0.921
+[B N= 48000 boot+prior s0] contacts in train 1331 | AUROC k0/k1/k2 = 0.700/0.701/0.701 | TPR@5%FPR k0/k1/k2 = 0.050/0.050/0.050 | logit-pess AUROC k1 0.698 | sigma->error AUROC 0.795
+[B N= 48000 boot+prior s1] contacts in train 1591 | AUROC k0/k1/k2 = 0.838/0.839/0.841 | TPR@5%FPR k0/k1/k2 = 0.242/0.263/0.273 | logit-pess AUROC k1 0.839 | sigma->error AUROC 0.920
+Saved -> ../results/exp2_uncertainty_B.json

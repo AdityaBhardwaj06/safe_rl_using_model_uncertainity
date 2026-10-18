@@ -1,0 +1,23 @@
+================================================================================================================
+  INTEGRATION TEST -- BUGGY (single optimiser on actor loss)
+  real data: data/pointgoal1_random.npz | H=15 | K=5 | kappa=1.0 | b=0.0 (discounted budget 0.000) | max achievable discounted H-step reward ~ 14.324
+================================================================================================================
+ iter |  WM loss | cost BCE | img reward(H) | img cost(H) | J^C value |   sigma |  lambda | checks
+--------------------------------------------------------------------------------------------------
+    1 |      nan |      nan |       -0.3105 |      7.2012 |    7.2012 |  0.0255 |  0.3601 | ok
+    2 |      nan |      nan |        8.2659 |      7.2090 |    7.2090 |  0.0237 |  0.7205 | ok
+    5 |      nan |      nan |       57.9168 |      5.5788 |    5.5788 |  0.0288 |  1.6724 | FAIL:reward-bound
+   25 |      nan |      nan |     1122.8221 |      0.0006 |    0.0006 |  0.0000 |  2.6547 | FAIL:reward-bound
+   50 |      nan |      nan |     8635.9482 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+   75 |      nan |      nan |    36361.1289 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  100 |      nan |      nan |   109278.6719 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  125 |      nan |      nan |   264446.2500 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  150 |      nan |      nan |   551307.5625 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  175 |      nan |      nan |  1031729.3125 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  200 |      nan |      nan |  1779770.5000 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  225 |      nan |      nan |  2881413.2500 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  250 |      nan |      nan |  4434068.0000 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  275 |      nan |      nan |  6546154.0000 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+  300 |      nan |      nan |  9336466.0000 |      0.0000 |    0.0000 |  0.0000 |  2.6548 | FAIL:reward-bound
+--------------------------------------------------------------------------------------------------
+3/300 iterations passed all invariant checks (45s). Log -> results/smoke_test_buggy.csv

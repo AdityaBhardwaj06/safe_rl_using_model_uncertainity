@@ -1,0 +1,11 @@
+[seed 0] bce: mean c_hat on safe = 0.0235 | far-safe 0.0063 | hazard 0.021 | AUROC 0.742 | 15-step 0.353 | discounted 2.35 | 1000-step 23.5
+[seed 0] mse: mean c_hat on safe = 0.0210 | far-safe 0.0071 | hazard 0.018 | AUROC 0.519 | 15-step 0.315 | discounted 2.10 | 1000-step 21.0
+[seed 1] bce: mean c_hat on safe = 0.0259 | far-safe 0.0095 | hazard 0.119 | AUROC 0.820 | 15-step 0.388 | discounted 2.59 | 1000-step 25.9
+[seed 1] mse: mean c_hat on safe = 0.0195 | far-safe 0.0069 | hazard 0.106 | AUROC 0.653 | 15-step 0.292 | discounted 1.95 | 1000-step 19.5
+[seed 2] bce: mean c_hat on safe = 0.0188 | far-safe 0.0021 | hazard 0.060 | AUROC 0.776 | 15-step 0.283 | discounted 1.88 | 1000-step 18.8
+[seed 2] mse: mean c_hat on safe = 0.0278 | far-safe 0.0065 | hazard 0.090 | AUROC 0.537 | 15-step 0.417 | discounted 2.78 | 1000-step 27.8
+
+SUMMARY (mean +- std over seeds)
+  bce: safe-state mean c_hat 0.0228 +- 0.0029; 15-step sum 0.341; discounted 2.28; 1000-step 22.8; AUROC 0.779
+  mse: safe-state mean c_hat 0.0228 +- 0.0036; 15-step sum 0.341; discounted 2.28; 1000-step 22.8; AUROC 0.570
+Saved -> ../results/exp1_noise_floor.json

@@ -1,52 +1,28 @@
 """
-Lagrangian Multiplier Module for Safe RL
-Project: Safe Reinforcement Learning using Model Uncertainty (CS F317, BITS Pilani)
+Dual (Lagrange multiplier) update for the CMDP  max J^R  s.t.  J^C <= b.
 
-Implements the adaptive dual multiplier update for Constrained MDPs:
-lambda_{k+1} = max(0, lambda_k + alpha_lambda * (J^C(pi) - b))
+    lambda_{k+1} = clip( lambda_k + alpha * (J^C_hat - b),  0,  lambda_max )
+
+Note: lambda is capped at lambda_max, so it cannot diverge to infinity in this code.
+
+Budget scaling. Safety-Gymnasium budgets b are UNDISCOUNTED costs per T = 1000-step episode.
+If a critic estimates DISCOUNTED cost (sum_t gamma^t c_t), compare it to the matching
+discounted budget for a constant per-step cost rate b / T:
+    d = (b / T) * (1 - gamma^T) / (1 - gamma)        (~ b / 10 for gamma = 0.99, T = 1000)
 """
 
-import torch
-import torch.nn as nn
+
+def discounted_budget(b, T=1000, gamma=0.99):
+    return (b / T) * (1 - gamma ** T) / (1 - gamma)
 
 
-class LagrangianMultiplier(nn.Module):
-    """
-    Manages the adaptive Lagrange multiplier lambda >= 0.
-    Dynamically balances reward maximization and cost constraint satisfaction.
-    """
-    def __init__(self, cost_limit=0.0, init_lambda=0.0, lr=1e-3, lambda_max=50.0):
-        super().__init__()
-        self.cost_limit = float(cost_limit)
+class LagrangeMultiplier:
+    def __init__(self, init=0.0, lr=0.01, max_value=50.0):
+        self.value = float(init)
         self.lr = float(lr)
-        self.lambda_max = float(lambda_max)
+        self.max_value = float(max_value)
 
-        # Parameterize via unconstrained log_lambda or raw parameter clamped at 0
-        self.raw_lambda = nn.Parameter(torch.tensor(float(init_lambda), dtype=torch.float32))
-
-    @property
-    def value(self):
-        """Current clamped non-negative multiplier value."""
-        return torch.clamp(self.raw_lambda, min=0.0, max=self.lambda_max)
-
-    def update(self, current_cost_return):
-        """
-        Dual gradient update step based on constraint violation.
-        Args:
-            current_cost_return (float or torch.Tensor): Expected cumulative cost J^C.
-        Returns:
-            violation (float): J^C - b.
-            new_lambda (float): Updated multiplier value.
-        """
-        if isinstance(current_cost_return, torch.Tensor):
-            cost_val = current_cost_return.detach().item()
-        else:
-            cost_val = float(current_cost_return)
-
-        violation = cost_val - self.cost_limit
-
-        # Dual ascent: if violation > 0, increase lambda; else decay toward 0
-        new_val = self.raw_lambda.data + self.lr * violation
-        self.raw_lambda.data = torch.clamp(new_val, min=0.0, max=self.lambda_max)
-
-        return violation, self.value.item()
+    def update(self, cost_estimate, budget):
+        violation = float(cost_estimate) - float(budget)
+        self.value = min(max(0.0, self.value + self.lr * violation), self.max_value)
+        return violation, self.value
